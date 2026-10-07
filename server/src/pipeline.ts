@@ -330,7 +330,7 @@ async function prepare(task: Task, note: (l: string) => void): Promise<Prep> {
     }
   }
   const branch =
-    existing ?? (desc && desc.match(new RegExp(`\\b((?:feat|fix|chore|refactor)/${key}[\\w\\-.]*)`, "i"))?.[1]) ?? (useJira ? `${isBug ? "fix" : "feat"}/${key}-${slugify(summary)}` : `${isBug ? "fix" : "feat"}/${slugify(summary, 6) || key.toLowerCase()}`);
+    existing ?? (desc?.match(new RegExp(`\\b((?:feat|fix|chore|refactor)/${key}[\\w\\-.]*)`, "i"))?.[1]) ?? (useJira ? `${isBug ? "fix" : "feat"}/${key}-${slugify(summary)}` : `${isBug ? "fix" : "feat"}/${slugify(summary, 6) || key.toLowerCase()}`);
 
   if (useJira && f) {
     const me = await jira<{ accountId: string }>("GET", "/rest/api/3/myself");
