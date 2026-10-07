@@ -1,0 +1,14 @@
+{
+  "name": "agent-team",
+  "private": true,
+  "scripts": {
+    "setup": "npm --prefix server install && npm --prefix web install",
+    "dev": "concurrently -k -n server,web -c blue,magenta \"npm --prefix server run dev\" \"npm --prefix web run dev\"",
+    "build": "npm --prefix web run build",
+    "start": "npm run build && npm --prefix server start",
+    "typecheck": "npm --prefix server run typecheck && npm --prefix web run typecheck"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.5"
+  }
+}
